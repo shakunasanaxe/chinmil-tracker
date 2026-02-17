@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChinMil Tracker | Corruption, Loyalty & Purges in China's Military</title>
+    <meta name="description" content="An intelligence briefing on corruption, loyalty, and purges in China's military and defence industry. Based on Eye on China by Anushka Saxena.">
+
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --bg-card: #141414;
+            --bg-card-hover: #1A1A1A;
+            --cream: #FFF8E7;
+            --cream-muted: #A89F8B;
+            --red: #E63946;
+            --yellow: #FFD60A;
+            --cyan: #00D4FF;
+            --green: #2ECC71;
+            --orange: #FF6B35;
+            --gold-border: #8B7534;
+            --gold-muted: rgba(139, 117, 52, 0.3);
+            --font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--cream);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--yellow);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--cream-muted);
+            max-width: 700px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* ===== NAV ===== */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gold-muted);
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--yellow);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            color: var(--cream-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--yellow);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+
+        /* ===== HERO ===== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 56px;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid rgba(230, 57, 70, 0.3);
+            box-shadow: 0 0 80px 20px rgba(230, 57, 70, 0.08), inset 0 0 80px 20px rgba(230, 57, 70, 0.05);
+            animation: radar-pulse 3.5s ease-in-out infinite;
+        }
+
+        #hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 350px;
+            height: 350px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid rgba(230, 57, 70, 0.2);
+            box-shadow: 0 0 60px 15px rgba(230, 57, 70, 0.06);
+            animation: radar-pulse 3.5s ease-in-out infinite 0.8s;
+        }
+
+        @keyframes radar-pulse {
+            0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.7); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.4); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 24px;
+        }
+
+        .hero-label {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            color: var(--yellow);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--cream);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--cream-muted);
+            margin-bottom: 32px;
+        }
+
+        .hero-author {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--cream-muted);
+        }
+
+        .hero-author strong {
+            color: var(--cream);
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--red);
+            margin: 24px auto 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.4rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+        }
+
+        /* ===== STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-muted);
+            border-radius: 8px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-border);
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .stat-number.red { color: var(--red); }
+        .stat-number.yellow { color: var(--yellow); }
+        .stat-number.cyan { color: var(--cyan); }
+
+        .stat-label {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--cream-muted);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-number { font-size: 2.4rem; }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== THREAT MATRIX ===== */
+        .threat-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .filter-btn {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            padding: 8px 18px;
+            border: 1px solid var(--gold-muted);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--cream-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--bg-card);
+            color: var(--cream);
+            border-color: var(--gold-border);
+        }
+
+        .threat-chart-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-muted);
+            border-radius: 12px;
+            padding: 32px 24px;
+            margin-bottom: 40px;
+        }
+
+        .threat-chart-container {
+            position: relative;
+            height: 700px;
+        }
+
+        .threat-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            color: var(--cream-muted);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Profile Cards */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-muted);
+            border-radius: 8px;
+            padding: 20px;
+            transition: border-color 0.3s, transform 0.2s;
+            cursor: default;
+        }
+
+        .profile-card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-2px);
+        }
+
+        .profile-name {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .profile-role {
+            font-size: 0.85rem;
+            color: var(--cream-muted);
+            margin-bottom: 10px;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            font-family: var(--font-serif);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .profile-fact {
+            font-size: 0.85rem;
+            color: var(--cream-muted);
+            line-height: 1.5;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-outer {
+            position: relative;
+            overflow-x: auto;
+            overflow-y: hidden;
+            cursor: grab;
+            padding: 20px 0;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .timeline-outer::-webkit-scrollbar { display: none; }
+
+        .timeline-outer.grabbing { cursor: grabbing; }
+
+        .timeline-track {
+            display: flex;
+            align-items: center;
+            min-width: 5200px;
+            position: relative;
+            padding: 200px 60px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: var(--gold-muted);
+        }
+
+        .timeline-event {
+            position: relative;
+            flex: 0 0 auto;
+            width: 240px;
+            margin: 0 16px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid;
+            background: var(--bg);
+            z-index: 2;
+        }
+
+        .timeline-stem {
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .event-card {
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--gold-muted);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .timeline-event:nth-child(odd) .event-card {
+            bottom: calc(50% + 40px);
+        }
+
+        .timeline-event:nth-child(odd) .timeline-stem {
+            bottom: 50%;
+            height: 40px;
+        }
+
+        .timeline-event:nth-child(even) .event-card {
+            top: calc(50% + 40px);
+        }
+
+        .timeline-event:nth-child(even) .timeline-stem {
+            top: 50%;
+            height: 40px;
+        }
+
+        .event-date {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .event-title {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--cream);
+        }
+
+        .event-desc {
+            font-size: 0.8rem;
+            color: var(--cream-muted);
+            line-height: 1.4;
+        }
+
+        .timeline-scroll-hint {
+            text-align: center;
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            color: var(--cream-muted);
+            margin-top: 12px;
+        }
+
+        /* ===== ANATOMY (Body Metaphor) ===== */
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .anatomy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-muted);
+            border-radius: 12px;
+            padding: 32px;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+
+        .anatomy-card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-3px);
+        }
+
+        .anatomy-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .anatomy-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .anatomy-meaning {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--cream-muted);
+            margin-bottom: 16px;
+        }
+
+        .anatomy-names {
+            list-style: none;
+        }
+
+        .anatomy-names li {
+            font-size: 0.9rem;
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+            color: var(--cream-muted);
+        }
+
+        .anatomy-names li::before {
+            content: '\25B8';
+            position: absolute;
+            left: 0;
+            color: var(--gold-border);
+        }
+
+        @media (max-width: 768px) {
+            .anatomy-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== FACTION NETWORK ===== */
+        .faction-container {
+            position: relative;
+            min-height: 500px;
+            background: var(--bg-card);
+            border: 1px solid var(--gold-muted);
+            border-radius: 12px;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .faction-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .faction-group {
+            position: relative;
+            z-index: 2;
+        }
+
+        .faction-layout {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .faction-column {
+            flex: 1;
+            max-width: 450px;
+        }
+
+        .faction-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid;
+        }
+
+        .faction-nodes {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faction-node {
+            background: var(--bg);
+            border: 2px solid var(--gold-muted);
+            border-radius: 8px;
+            padding: 14px 18px;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .faction-node:hover {
+            transform: scale(1.03);
+            z-index: 10;
+        }
+
+        .faction-node.leader {
+            border-width: 3px;
+        }
+
+        .faction-node .node-name {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .faction-node .node-role {
+            font-size: 0.8rem;
+            color: var(--cream-muted);
+            margin-top: 2px;
+        }
+
+        .faction-node .node-status {
+            display: inline-block;
+            font-family: var(--font-serif);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin-top: 6px;
+        }
+
+        .faction-divider-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--cream-muted);
+            background: var(--bg-card);
+            padding: 8px 16px;
+            border: 1px solid var(--gold-muted);
+            border-radius: 20px;
+            z-index: 3;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .faction-layout { flex-direction: column; align-items: center; }
+            .faction-divider-label { position: static; transform: none; margin: 20px auto; }
+        }
+
+        /* ===== SOE PURGES ===== */
+        .soe-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .soe-chart-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-muted);
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .soe-chart-container {
+            position: relative;
+            height: 350px;
+        }
+
+        .soe-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border: 1px solid var(--gold-muted);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .soe-table thead {
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+        }
+
+        .soe-table th {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 14px 16px;
+            text-align: left;
+            color: var(--yellow);
+            border-bottom: 2px solid var(--gold-border);
+        }
+
+        .soe-table td {
+            font-size: 0.85rem;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--gold-muted);
+            color: var(--cream-muted);
+        }
+
+        .soe-table tbody tr:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .soe-table td:first-child {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        @media (max-width: 768px) {
+            .soe-layout { grid-template-columns: 1fr; }
+        }
+
+        /* ===== SCHRODINGER'S GENERALS ===== */
+        .schrodinger-content {
+            text-align: center;
+        }
+
+        .general-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 6px;
+            max-width: 420px;
+            margin: 0 auto 40px;
+        }
+
+        .general-cell {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .general-cell.present {
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--cyan);
+        }
+
+        .general-cell.disappeared {
+            background: rgba(230, 57, 70, 0.15);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            color: var(--red);
+            animation: flicker 3s ease-in-out infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            40% { opacity: 0.15; }
+            60% { opacity: 0.15; }
+        }
+
+        .schrodinger-stat {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+
+        .schrodinger-stat span {
+            color: var(--cream-muted);
+            font-size: 2.5rem;
+        }
+
+        .schrodinger-desc {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--cream-muted);
+            font-style: italic;
+        }
+
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            border-top: 1px solid var(--gold-muted);
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            color: var(--cyan);
+            text-decoration: none;
+            padding: 4px 12px;
+            border: 1px solid var(--gold-muted);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            border-color: var(--cyan);
+            background: rgba(0, 212, 255, 0.08);
+        }
+
+        .footer-note {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--cream-muted);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <div class="nav-logo">ChinMil Tracker</div>
+            <ul class="nav-links">
+                <li><a href="#stats">Numbers</a></li>
+                <li><a href="#threat-matrix">Threat Matrix</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#anatomy">Anatomy</a></li>
+                <li><a href="#factions">Factions</a></li>
+                <li><a href="#soe-purges">SOE Purges</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-label">ChinMil Tracker</div>
+            <h1 class="hero-title">Corruption, Loyalty & Purges in China's Military and Defence Industry</h1>
+            <p class="hero-author">By <strong>Anushka Saxena</strong></p>
+            <div class="hero-divider"></div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">The Scale of the Purge</span>
+                <h2 class="section-title" style="color: var(--cyan);">By the Numbers</h2>
+            </div>
+            <div class="stats-grid" id="statsGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- THREAT MATRIX -->
+    <section id="threat-matrix">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Sentiment Analysis</span>
+                <h2 class="section-title" style="color: var(--red);">The Threat Matrix</h2>
+                <p class="section-subtitle">Who is in how much trouble?</p>
+            </div>
+
+            <div class="threat-legend animate-on-scroll">
+                <div class="legend-item"><div class="legend-dot" style="background: #E63946;"></div>Expelled / Prosecuted</div>
+                <div class="legend-item"><div class="legend-dot" style="background: #FF6B35;"></div>Under Investigation</div>
+                <div class="legend-item"><div class="legend-dot" style="background: #FFD60A;"></div>Recently Removed</div>
+                <div class="legend-item"><div class="legend-dot" style="background: #00D4FF;"></div>Previously Purged (SOE)</div>
+            </div>
+
+            <div class="threat-filters animate-on-scroll" id="threatFilters">
+                <button class="filter-btn active" data-tier="all">All</button>
+                <button class="filter-btn" data-tier="EXPELLED">Expelled</button>
+                <button class="filter-btn" data-tier="UNDER_INVESTIGATION">Under Investigation</button>
+                <button class="filter-btn" data-tier="RECENTLY_REMOVED">Recently Removed</button>
+                <button class="filter-btn" data-tier="PREVIOUSLY_PURGED_SOE">SOE Purged</button>
+            </div>
+
+            <div class="threat-chart-wrap animate-on-scroll">
+                <div class="threat-chart-container">
+                    <canvas id="threatChart"></canvas>
+                </div>
+            </div>
+
+            <h3 style="font-family: var(--font-serif); color: var(--yellow); margin-bottom: 24px; text-align: center;">Individual Profiles</h3>
+            <div class="profile-grid" id="profileGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Chronology</span>
+                <h2 class="section-title" style="color: var(--yellow);">The Purge Timeline</h2>
+                <p class="section-subtitle">The escalatory ladder of military purges.</p>
+            </div>
+        </div>
+        <div class="timeline-outer" id="timelineOuter">
+            <div class="timeline-track" id="timelineTrack">
+                <div class="timeline-line"></div>
+                <!-- Populated by JS -->
+            </div>
+        </div>
+        <p class="timeline-scroll-hint">&larr; Drag to scroll &rarr;</p>
+    </section>
+
+    <!-- ANATOMY -->
+    <section id="anatomy">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Corruption Anatomy</span>
+                <h2 class="section-title" style="color: var(--green);">Brains, Bones, Veins & Kidney Stones</h2>
+                <p class="section-subtitle">How corruption integrates horizontally and vertically through the system.</p>
+            </div>
+            <div class="anatomy-grid" id="anatomyGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FACTIONS -->
+    <section id="factions">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Patron-Client Networks</span>
+                <h2 class="section-title" style="color: var(--orange);">The Factions</h2>
+                <p class="section-subtitle">Two competing military factions: the Fujian Gang and the Shaanxi Gang.</p>
+            </div>
+            <div class="faction-container animate-on-scroll" id="factionContainer">
+                <div class="faction-layout">
+                    <div class="faction-column" id="fujianColumn">
+                        <div class="faction-title" style="color: var(--red); border-color: var(--red);">Fujian Gang / Taiwan-Fujian Clique</div>
+                        <div class="faction-nodes" id="fujianNodes"></div>
+                    </div>
+                    <div class="faction-column" id="shaanxiColumn">
+                        <div class="faction-title" style="color: var(--yellow); border-color: var(--yellow);">Shaanxi Gang</div>
+                        <div class="faction-nodes" id="shaanxiNodes"></div>
+                    </div>
+                </div>
+                <div class="faction-divider-label">CMC</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOE PURGES -->
+    <section id="soe-purges">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Defence SOE Purges</span>
+                <h2 class="section-title" style="color: var(--cyan);">Fallen Defence Industrialists</h2>
+                <p class="section-subtitle">State-owned enterprise leaders purged from China's defence-industrial complex.</p>
+            </div>
+            <div class="soe-layout animate-on-scroll">
+                <div class="soe-chart-wrap">
+                    <div class="soe-chart-container">
+                        <canvas id="soeChart"></canvas>
+                    </div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="soe-table" id="soeTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Organization</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="soeTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHRODINGER'S GENERALS -->
+    <section id="schrodinger">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Hidden Tumours</span>
+                <h2 class="section-title" style="color: var(--red);">Schrodinger's Generals</h2>
+                <p class="section-subtitle">Officials who have disappeared from public life without any formal announcement.</p>
+            </div>
+            <div class="schrodinger-content animate-on-scroll">
+                <div class="general-grid" id="generalGrid"></div>
+                <div class="schrodinger-stat">23 <span>/ 81</span></div>
+                <p class="schrodinger-desc">Xi-promoted generals have vanished without notice since October 2022</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p class="footer-title">Read Anushka Saxena's Newsletter, <a href="https://eyeonchina.substack.com" target="_blank" style="color: var(--cyan); text-decoration: none; border-bottom: 1px solid var(--cyan);">'Eye on China'</a>, for more</p>
+        <p class="footer-note" style="margin-top: 16px;">&copy; 2026 ChinMil Tracker</p>
+    </footer>
+
+    <script>
+    // ============================================================
+    // DATA
+    // ============================================================
+    const DATA = {
+        individuals: [
+            { id: 'he_weidong', name: 'He Weidong', role: 'CMC Vice Chairman', domain: 'military_command', tier: 'EXPELLED', troubleScore: 98, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Leader of the Fujian Gang. Expelled alongside 8 others in the mega-purge at the 4th Plenum.' },
+            { id: 'li_yuchao', name: 'Li Yuchao', role: 'PLARF Commander', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 97, faction: null, actionDate: '2023', actionType: 'Purged', keyFact: 'First PLARF Commander purged. Triggered the cascade of Rocket Force investigations.' },
+            { id: 'miao_hua', name: 'Miao Hua', role: 'CMC Political Work Dept Director', domain: 'political_work', tier: 'EXPELLED', troubleScore: 96, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Head of the political work department. Core Fujian Gang member arrested November 2024.' },
+            { id: 'wang_houbin', name: 'Wang Houbin', role: 'Rocket Force Commander', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 96, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Second PLARF Commander purged in succession. PLAN background.' },
+            { id: 'lin_xiangyang', name: 'Lin Xiangyang', role: 'Eastern Theater Commander', domain: 'military_command', tier: 'EXPELLED', troubleScore: 95, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Eastern Theater Commander. Critical for Taiwan contingency planning.' },
+            { id: 'xu_zhongbo', name: 'Xu Zhongbo', role: 'PLARF Political Commissar', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 95, faction: null, actionDate: '2023', actionType: 'Purged', keyFact: 'Purged alongside Li Yuchao from the Rocket Force.' },
+            { id: 'he_hongjun', name: 'He Hongjun', role: 'Deputy Dir, Political Work Dept', domain: 'political_work', tier: 'EXPELLED', troubleScore: 94, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Subordinate to Miao Hua in the political work system.' },
+            { id: 'wang_xiubin', name: 'Wang Xiubin', role: 'Joint Operations Command Center', domain: 'military_command', tier: 'EXPELLED', troubleScore: 93, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Connected to the Joint Operations Command structure.' },
+            { id: 'yuan_huazhi', name: 'Yuan Huazhi', role: 'Navy Political Commissar', domain: 'political_work', tier: 'EXPELLED', troubleScore: 92, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Navy political commissar. Part of the 9-person mega-purge.' },
+            { id: 'qin_shutong', name: 'Qin Shutong', role: 'Army Political Commissar', domain: 'political_work', tier: 'EXPELLED', troubleScore: 92, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Army political commissar expelled in the October mega-purge.' },
+            { id: 'wang_chunning', name: 'Wang Chunning', role: "People's Armed Police Commander", domain: 'military_command', tier: 'EXPELLED', troubleScore: 91, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: "PAP Commander. Domestic security apparatus affected by the purge." },
+            { id: 'zhang_youxia', name: 'Zhang Youxia', role: 'CMC Vice Chairman (age 76)', domain: 'military_command', tier: 'UNDER_INVESTIGATION', troubleScore: 80, faction: 'shaanxi', actionDate: 'Jan 2026', actionType: 'Investigation confirmed by MND', keyFact: 'Highest-ranking figure under investigation. Leader of the Shaanxi Gang. Career military officer.' },
+            { id: 'li_shangfu', name: 'Li Shangfu', role: 'Former Defence Minister', domain: 'military_command', tier: 'UNDER_INVESTIGATION', troubleScore: 78, faction: null, actionDate: '2023', actionType: 'Removed < 6 months into role', keyFact: 'Defence Minister removed within 6 months. Corruption during EDD tenure.' },
+            { id: 'liu_zhenli', name: 'Liu Zhenli', role: 'CMC Chief of Staff', domain: 'military_command', tier: 'UNDER_INVESTIGATION', troubleScore: 75, faction: null, actionDate: 'Jan 2026', actionType: 'Under investigation', keyFact: 'CMC Joint Staff Department Chief. Under investigation for serious violations.' },
+            { id: 'zhou_xinmin', name: 'Zhou Xinmin', role: 'AVIC Chairman', domain: 'soe_industry', tier: 'RECENTLY_REMOVED', troubleScore: 65, faction: null, actionDate: 'Feb 2026', actionType: 'Removed at emergency NPC session', keyFact: 'Second AVIC chair purged. Less than 2 years into tenure. Preceded by Tan Ruisong.' },
+            { id: 'liu_cangli', name: 'Liu Cangli', role: 'CAEP Director (nuclear weapons)', domain: 'soe_industry', tier: 'RECENTLY_REMOVED', troubleScore: 63, faction: null, actionDate: 'Feb 2026', actionType: 'Removed at emergency NPC session', keyFact: 'CAEP Director. Sole nuclear warhead physicist-administrator. Highest sensitivity removal.' },
+            { id: 'luo_qi', name: 'Luo Qi', role: 'Chief Engineer, CNNC', domain: 'soe_industry', tier: 'RECENTLY_REMOVED', troubleScore: 62, faction: null, actionDate: 'Feb 2026', actionType: 'Removed at emergency NPC session', keyFact: 'CNNC Chief Engineer. Supervised nuclear research. Academy of Engineering member.' },
+            { id: 'tan_ruisong', name: 'Tan Ruisong', role: 'AVIC Chairman (predecessor)', domain: 'soe_industry', tier: 'PREVIOUSLY_PURGED_SOE', troubleScore: 55, faction: null, actionDate: 'Aug 2024', actionType: 'Investigated Aug 2024, expelled 2025', keyFact: 'First AVIC Chairman investigated. Set the pattern for SOE purges.' },
+            { id: 'gu_jun', name: 'Gu Jun', role: 'CNNC General Manager', domain: 'soe_industry', tier: 'PREVIOUSLY_PURGED_SOE', troubleScore: 52, faction: null, actionDate: 'Jan 2026', actionType: 'Removed', keyFact: 'CNNC General Manager removed. Nuclear industry systematically targeted.' },
+            { id: 'wu_yansheng', name: 'Wu Yansheng', role: 'CASC Leader', domain: 'soe_industry', tier: 'PREVIOUSLY_PURGED_SOE', troubleScore: 50, faction: null, actionDate: null, actionType: 'Purged', keyFact: 'China Aerospace Science and Technology Corporation leadership purged.' },
+            { id: 'liu_shiquan', name: 'Liu Shiquan', role: 'NORINCO Leader', domain: 'soe_industry', tier: 'PREVIOUSLY_PURGED_SOE', troubleScore: 50, faction: null, actionDate: null, actionType: 'Purged', keyFact: 'NORINCO leadership targeted. Arms manufacturing corruption.' },
+            { id: 'wang_xiaojun', name: 'Wang Xiaojun', role: 'CALT Leader', domain: 'soe_industry', tier: 'PREVIOUSLY_PURGED_SOE', troubleScore: 48, faction: null, actionDate: null, actionType: 'Purged', keyFact: 'China Academy of Launch Vehicle Technology. Missile procurement corruption.' },
+        ],
+
+        tierConfig: {
+            EXPELLED: { color: '#E63946', label: 'Expelled / Prosecuted' },
+            UNDER_INVESTIGATION: { color: '#FF6B35', label: 'Under Investigation' },
+            RECENTLY_REMOVED: { color: '#FFD60A', label: 'Recently Removed' },
+            PREVIOUSLY_PURGED_SOE: { color: '#00D4FF', label: 'Previously Purged (SOE)' },
+        },
+
+        stats: [
+            { value: 65, label: 'Centrally-managed officials investigated (2025)', color: 'red' },
+            { value: 33, label: 'Total Generals Removed in Just October 2025', color: 'yellow' },
+            { value: 780000, label: 'Total Indiscipline Cases Filed Nationwide', color: 'yellow', format: 'comma', suffix: '+' },
+            { value: 15, label: 'Defence SOE leaders targeted since 2023', color: 'cyan', suffix: '+' },
+            { value: 23, label: 'Xi-promoted generals vanished (of 81)', color: 'red' },
+        ],
+
+        timeline: [
+            { date: 'Jul 2023', title: 'EDD Whistleblower Notice', desc: 'Equipment Development Department issues public notice calling for whistleblowers to report procurement corruption dating back to 2017.', color: '#FF6B35' },
+            { date: 'Jul 2023', title: 'Qin Gang Removed', desc: 'Foreign Minister Qin Gang removed during emergency NPC Standing Committee session.', color: '#E63946' },
+            { date: 'H2 2023', title: 'Rocket Force Commanders Purged', desc: 'Li Yuchao (PLARF Commander) and Xu Zhongbo (PLARF Political Commissar) purged. First major Rocket Force casualties.', color: '#E63946' },
+            { date: 'H2 2023', title: 'Li Shangfu Removed', desc: 'Defence Minister Li Shangfu removed less than 6 months into his role. Corruption during EDD tenure cited.', color: '#E63946' },
+            { date: '2023\u20132024', title: 'Theater Commanders Replaced', desc: 'Wang Hajiang (Western TC), Huang Ming (Northern TC), Wu Yanan (Southern TC) replaced. Ju Qiansheng (SSF Commander) removed.', color: '#FF6B35' },
+            { date: '2024', title: 'Li Qiaoming Removed', desc: 'PLA Army Commander Li Qiaoming gone. Service-level leadership churn accelerates.', color: '#FF6B35' },
+            { date: 'Aug 2024', title: 'Tan Ruisong Investigated', desc: 'AVIC Chairman Tan Ruisong investigated for corruption. First major defence SOE leadership casualty.', color: '#FFD60A' },
+            { date: 'Sep 2024', title: 'PLA Restructured', desc: 'Cyberspace Force established from Strategic Support Force. Information Support Force and Joint Logistics created as new support arms.', color: '#00D4FF' },
+            { date: 'Oct 2024', title: 'Qin Shengxiang Rumored', desc: 'Former CMC General Office Director Qin Shengxiang allegedly under investigation for corruption.', color: '#A89F8B' },
+            { date: 'Early 2025', title: 'Tan Ruisong Expelled', desc: 'AVIC Chairman Tan Ruisong formally expelled from CPC following corruption investigation.', color: '#E63946' },
+            { date: 'Mar 2025', title: 'Luo Qi Absent', desc: 'CNNC Chief Engineer Luo Qi conspicuously absent from Two Sessions presidium list, signaling political trouble.', color: '#A89F8B' },
+            { date: 'Oct 17, 2025', title: '4th Plenum Mega-Purge', desc: '9 officials expelled: He Weidong, Miao Hua, He Hongjun, Wang Xiubin, Lin Xiangyang, Qin Shutong, Yuan Huazhi, Wang Houbin, Wang Chunning. Charges: serious violations, extraordinarily large sums.', color: '#E63946' },
+            { date: 'Nov 3, 2025', title: 'New CMC Lineup Appears', desc: 'Zhang Shengmin makes first official appearance as new CMC Second Vice-Chair. Zhang Youxia and Liu Zhenli also present.', color: '#00D4FF' },
+            { date: 'Dec 2025', title: 'Politburo Self-Criticism', desc: 'Annual Politburo "Democratic Life" meeting. Record levels of purges and investigations reported across the board.', color: '#FFD60A' },
+            { date: 'Jan 14, 2026', title: 'CCDI Plenary Session', desc: 'CCDI 5th Plenary Session announces shift toward digitalized anti-corruption and focus on "new types of corruption and hidden corruption."', color: '#FF6B35' },
+            { date: 'Jan 20, 2026', title: 'Zhang Youxia Absent', desc: 'CMC Vice Chairman Zhang Youxia notably absent from "Study Session for Principal Officials."', color: '#A89F8B' },
+            { date: 'Jan 24, 2026', title: 'Zhang Youxia Investigation Confirmed', desc: 'Ministry of National Defense confirms Zhang Youxia and Liu Zhenli under investigation for "serious violations of discipline and law." Gu Jun (CNNC) also removed.', color: '#E63946' },
+            { date: 'Feb 3, 2026', title: 'AVIC Internal Meeting', desc: 'Internal AVIC anti-corruption meeting held. Signals imminent action against current leadership.', color: '#FF6B35' },
+            { date: 'Feb 4, 2026', title: 'Emergency NPC Session', desc: 'Zhou Xinmin (AVIC Chairman), Luo Qi (CNNC Chief Engineer), Liu Cangli (CAEP Director) removed at emergency NPC Standing Committee session.', color: '#E63946' },
+        ],
+
+        anatomy: [
+            { icon: '\uD83E\uDDE0', title: 'Brains', subtitle: 'CMC Leadership &mdash; Command Decisions', color: 'var(--red)', names: ['He Weidong &mdash; CMC Vice Chairman (expelled)', 'Zhang Youxia &mdash; CMC Vice Chairman (under investigation)', 'Miao Hua &mdash; Political Work Dept Director (expelled)', 'Liu Zhenli &mdash; CMC Chief of Staff (under investigation)'] },
+            { icon: '\uD83E\uDDB4', title: 'Bones', subtitle: 'Force Structure &mdash; Theater Commands', color: 'var(--yellow)', names: ['Lin Xiangyang &mdash; Eastern Theater Commander', 'Qin Shutong &mdash; Army Political Commissar', 'Yuan Huazhi &mdash; Navy Political Commissar', 'Wang Chunning &mdash; PAP Commander'] },
+            { icon: '\uD83E\uDE78', title: 'Veins', subtitle: 'Procurement Networks &mdash; Patron-Client Ties', color: 'var(--cyan)', names: ['SOE leaders across AVIC, CNNC, CASC, NORINCO', 'EDD procurement bidding connections', 'Horizontal integration of corruption across agencies', '"Shadow companies" and proxy shareholding'] },
+            { icon: '\uD83E\uDEA8', title: 'Kidney Stones', subtitle: 'Embedded Corruption &mdash; Hard to Remove', color: 'var(--orange)', names: ['23 disappeared "Schrodinger\'s Generals"', '"Three-foot-thick ice" of systemic graft', 'Water-filled missiles, dysfunctional silos', '"Darkness under the lamp" in oversight bodies'] },
+        ],
+
+        fujianGang: [
+            { name: 'He Weidong', role: 'CMC Vice Chairman (Patron)', status: 'Expelled', isLeader: true },
+            { name: 'Miao Hua', role: 'CMC Political Work Dept Director', status: 'Expelled', isLeader: false },
+            { name: 'Lin Xiangyang', role: 'Eastern Theater Commander', status: 'Expelled', isLeader: false },
+            { name: 'He Hongjun', role: 'Deputy Dir, Political Work Dept', status: 'Expelled', isLeader: false },
+            { name: 'Wang Xiubin', role: 'Joint Operations Command', status: 'Expelled', isLeader: false },
+        ],
+
+        shaanxiGang: [
+            { name: 'Zhang Youxia', role: 'CMC Vice Chairman (Patron)', status: 'Under Investigation', isLeader: true },
+            { name: 'Zhang Shengmin', role: 'CMC Discipline Inspection Secretary', status: 'Active / Promoted', isLeader: false },
+        ],
+
+        soeData: [
+            { name: 'Tan Ruisong', org: 'AVIC', role: 'Chairman', action: 'Investigated Aug 2024, expelled 2025' },
+            { name: 'Zhou Xinmin', org: 'AVIC', role: 'Chairman (successor)', action: 'Removed Feb 2026 (emergency NPC)' },
+            { name: 'Gu Jun', org: 'CNNC', role: 'General Manager', action: 'Removed Jan 2026' },
+            { name: 'Luo Qi', org: 'CNNC', role: 'Chief Engineer', action: 'Removed Feb 2026 (emergency NPC)' },
+            { name: 'Wu Yansheng', org: 'CASC', role: 'Leader', action: 'Purged' },
+            { name: 'Liu Shiquan', org: 'NORINCO', role: 'Leader', action: 'Purged' },
+            { name: 'Wang Xiaojun', org: 'CALT', role: 'Leader', action: 'Purged' },
+            { name: 'Liu Cangli', org: 'CAEP', role: 'Director', action: 'Removed Feb 2026 (emergency NPC)' },
+        ],
+
+        metaphors: [
+            { phrase: 'Cage the tigers, cast a net for their cubs', explanation: 'Senior leaders are targeted first; their protege networks are then dismantled systematically.' },
+            { phrase: "Schrodinger's generals", explanation: 'Officials who have disappeared from public life without any formal announcement of investigation or removal. Neither confirmed in nor out.' },
+            { phrase: 'Flies to be swatted, tigers to be caged', explanation: 'Corruption is targeted at every level \u2014 low-ranking flies and high-ranking tigers alike.' },
+            { phrase: 'Three-foot-thick ice', explanation: 'Corruption so deeply embedded in the system that it cannot be addressed through surface-level measures.' },
+            { phrase: 'Hidden tumours', explanation: 'Corruption concealed within institutions that appear healthy on the surface but are rotting within.' },
+            { phrase: 'Patron-client networks', explanation: 'Factional loyalty structures where senior patrons protect and promote their clients in exchange for absolute loyalty.' },
+            { phrase: 'Horizontal and vertical integration of corruption', explanation: 'Corruption that spans both up and down the chain of command and across peer institutions \u2014 a tiao-kuai framework.' },
+            { phrase: 'Brains, Bones, Veins & Kidney Stones', explanation: 'Leadership is the brain, force structure is bones, procurement networks are veins, and embedded corruption is kidney stones that are painful and hard to remove.' },
+            { phrase: 'Garbage Collection, Rectification & Disposal', explanation: 'The three-phase framework for how the anti-corruption campaign operates: identify, correct, and eliminate.' },
+            { phrase: 'Darkness under the lamp', explanation: 'Corruption hidden in the very institutions tasked with oversight and discipline.' },
+        ],
+    };
+
+    // ============================================================
+    // UTILITY FUNCTIONS
+    // ============================================================
+    function formatNumber(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 1000) return n.toLocaleString('en-IN');
+        return n.toString();
+    }
+
+    function animateCounter(el, target, suffix) {
+        suffix = suffix || '';
+        const duration = 2000;
+        const start = performance.now();
+        function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(eased * target);
+            el.textContent = formatNumber(current) + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+            else el.textContent = formatNumber(target) + suffix;
+        }
+        requestAnimationFrame(update);
+    }
+
+    // ============================================================
+    // SCROLL ANIMATION (Intersection Observer)
+    // ============================================================
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                scrollObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+
+    // ============================================================
+    // NAV ACTIVE STATE
+    // ============================================================
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    sections.forEach(s => navObserver.observe(s));
+
+    // ============================================================
+    // STATS SECTION
+    // ============================================================
+    (function buildStats() {
+        const grid = document.getElementById('statsGrid');
+        DATA.stats.forEach((stat, i) => {
+            const card = document.createElement('div');
+            card.className = 'stat-card animate-on-scroll';
+            card.style.transitionDelay = (i * 0.1) + 's';
+            const numEl = document.createElement('div');
+            numEl.className = 'stat-number ' + stat.color;
+            numEl.textContent = '0';
+            numEl.dataset.target = stat.value;
+            numEl.dataset.suffix = stat.suffix || '';
+            const label = document.createElement('div');
+            label.className = 'stat-label';
+            label.textContent = stat.label;
+            card.appendChild(numEl);
+            card.appendChild(label);
+            grid.appendChild(card);
+
+            const obs = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    card.classList.add('animate-in');
+                    animateCounter(numEl, stat.value, stat.suffix || '');
+                    obs.unobserve(card);
+                }
+            }, { threshold: 0.3 });
+            obs.observe(card);
+        });
+    })();
+
+    // ============================================================
+    // THREAT MATRIX CHART
+    // ============================================================
+    let threatChartInstance;
+
+    function buildThreatChart(filterTier) {
+        const ctx = document.getElementById('threatChart').getContext('2d');
+        let filtered = DATA.individuals;
+        if (filterTier && filterTier !== 'all') {
+            filtered = DATA.individuals.filter(p => p.tier === filterTier);
+        }
+        filtered.sort((a, b) => b.troubleScore - a.troubleScore);
+
+        const container = document.querySelector('.threat-chart-container');
+        container.style.height = Math.max(400, filtered.length * 32) + 'px';
+
+        if (threatChartInstance) threatChartInstance.destroy();
+
+        threatChartInstance = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: filtered.map(p => p.name),
+                datasets: [{
+                    data: filtered.map(p => p.troubleScore),
+                    backgroundColor: filtered.map(p => DATA.tierConfig[p.tier].color),
+                    borderRadius: 4,
+                    barThickness: 20,
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#141414',
+                        borderColor: '#8B7534',
+                        borderWidth: 1,
+                        titleFont: { family: "'EB Garamond', serif", size: 14, weight: 'bold' },
+                        bodyFont: { family: "'Lato', sans-serif", size: 12 },
+                        titleColor: '#FFF8E7',
+                        bodyColor: '#A89F8B',
+                        callbacks: {
+                            title: function(items) { return filtered[items[0].dataIndex].name; },
+                            label: function(item) {
+                                const p = filtered[item.dataIndex];
+                                return [
+                                    p.role,
+                                    DATA.tierConfig[p.tier].label,
+                                    p.actionDate ? 'Action: ' + p.actionDate : ''
+                                ].filter(Boolean);
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        max: 100,
+                        grid: { color: 'rgba(139, 117, 52, 0.15)' },
+                        ticks: {
+                            color: '#A89F8B',
+                            font: { family: "'EB Garamond', serif", size: 12 },
+                            callback: function(v) {
+                                if (v === 0) return 'Safe';
+                                if (v === 50) return 'At Risk';
+                                if (v === 100) return 'Purged';
+                                return '';
+                            }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#FFF8E7',
+                            font: { family: "'EB Garamond', serif", size: 13, weight: '600' }
+                        },
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    }
+
+    buildThreatChart('all');
+
+    // Filter buttons
+    document.getElementById('threatFilters').addEventListener('click', function(e) {
+        if (e.target.classList.contains('filter-btn')) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            buildThreatChart(e.target.dataset.tier);
+        }
+    });
+
+    // ============================================================
+    // PROFILE CARDS
+    // ============================================================
+    (function buildProfiles() {
+        const grid = document.getElementById('profileGrid');
+        DATA.individuals.forEach(p => {
+            const config = DATA.tierConfig[p.tier];
+            const card = document.createElement('div');
+            card.className = 'profile-card';
+            card.innerHTML =
+                '<div class="profile-name">' + p.name + '</div>' +
+                '<div class="profile-role">' + p.role + '</div>' +
+                '<div class="profile-badge" style="background:' + config.color + '22; color:' + config.color + '; border: 1px solid ' + config.color + '44;">' + config.label + '</div>' +
+                (p.actionDate ? '<div style="font-family:var(--font-serif);font-size:0.8rem;color:var(--cream-muted);margin-bottom:8px;">' + p.actionDate + ' &mdash; ' + p.actionType + '</div>' : '') +
+                '<div class="profile-fact">' + p.keyFact + '</div>';
+            grid.appendChild(card);
+        });
+    })();
+
+    // ============================================================
+    // TIMELINE
+    // ============================================================
+    (function buildTimeline() {
+        const track = document.getElementById('timelineTrack');
+        DATA.timeline.forEach((evt, i) => {
+            const div = document.createElement('div');
+            div.className = 'timeline-event';
+            div.innerHTML =
+                '<div class="timeline-dot" style="border-color:' + evt.color + ';"></div>' +
+                '<div class="timeline-stem" style="background:' + evt.color + ';"></div>' +
+                '<div class="event-card">' +
+                    '<div class="event-date" style="color:' + evt.color + ';">' + evt.date + '</div>' +
+                    '<div class="event-title">' + evt.title + '</div>' +
+                    '<div class="event-desc">' + evt.desc + '</div>' +
+                '</div>';
+            track.appendChild(div);
+        });
+
+        // Drag to scroll
+        const outer = document.getElementById('timelineOuter');
+        let isDown = false, startX, scrollLeft;
+        outer.addEventListener('mousedown', (e) => { isDown = true; outer.classList.add('grabbing'); startX = e.pageX - outer.offsetLeft; scrollLeft = outer.scrollLeft; });
+        outer.addEventListener('mouseleave', () => { isDown = false; outer.classList.remove('grabbing'); });
+        outer.addEventListener('mouseup', () => { isDown = false; outer.classList.remove('grabbing'); });
+        outer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            outer.scrollLeft = scrollLeft - (e.pageX - outer.offsetLeft - startX);
+        });
+    })();
+
+    // ============================================================
+    // ANATOMY (Body Metaphor)
+    // ============================================================
+    (function buildAnatomy() {
+        const grid = document.getElementById('anatomyGrid');
+        DATA.anatomy.forEach(a => {
+            const card = document.createElement('div');
+            card.className = 'anatomy-card animate-on-scroll';
+            card.innerHTML =
+                '<div class="anatomy-icon">' + a.icon + '</div>' +
+                '<div class="anatomy-title" style="color:' + a.color + ';">' + a.title + '</div>' +
+                '<div class="anatomy-meaning">' + a.subtitle + '</div>' +
+                '<ul class="anatomy-names">' + a.names.map(n => '<li>' + n + '</li>').join('') + '</ul>';
+            grid.appendChild(card);
+            scrollObserver.observe(card);
+        });
+    })();
+
+    // ============================================================
+    // FACTION NETWORK
+    // ============================================================
+    (function buildFactions() {
+        function renderNodes(containerId, members, factionColor) {
+            const container = document.getElementById(containerId);
+            members.forEach(m => {
+                const node = document.createElement('div');
+                node.className = 'faction-node' + (m.isLeader ? ' leader' : '');
+
+                let statusColor, statusBg;
+                if (m.status === 'Expelled') { statusColor = '#E63946'; statusBg = 'rgba(230,57,70,0.15)'; }
+                else if (m.status === 'Under Investigation') { statusColor = '#FF6B35'; statusBg = 'rgba(255,107,53,0.15)'; }
+                else { statusColor = '#2ECC71'; statusBg = 'rgba(46,204,113,0.15)'; }
+
+                node.style.borderColor = m.isLeader ? factionColor : statusColor;
+
+                node.innerHTML =
+                    '<div class="node-name">' + m.name + '</div>' +
+                    '<div class="node-role">' + m.role + '</div>' +
+                    '<div class="node-status" style="background:' + statusBg + ';color:' + statusColor + ';">' + m.status + '</div>';
+                container.appendChild(node);
+            });
+        }
+
+        renderNodes('fujianNodes', DATA.fujianGang, '#E63946');
+        renderNodes('shaanxiNodes', DATA.shaanxiGang, '#FFD60A');
+    })();
+
+    // ============================================================
+    // SOE PURGES
+    // ============================================================
+    (function buildSOE() {
+        // Doughnut chart
+        const orgCounts = {};
+        DATA.soeData.forEach(d => { orgCounts[d.org] = (orgCounts[d.org] || 0) + 1; });
+        const labels = Object.keys(orgCounts);
+        const values = Object.values(orgCounts);
+        const chartColors = ['#E63946', '#FF6B35', '#FFD60A', '#00D4FF', '#2ECC71', '#A89F8B'];
+
+        new Chart(document.getElementById('soeChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: chartColors.slice(0, labels.length),
+                    borderColor: '#141414',
+                    borderWidth: 3,
+                }]
+            },
+            options: {
+                cutout: '60%',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#FFF8E7',
+                            font: { family: "'EB Garamond', serif", size: 13 },
+                            padding: 16,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#141414',
+                        borderColor: '#8B7534',
+                        borderWidth: 1,
+                        titleColor: '#FFF8E7',
+                        bodyColor: '#A89F8B',
+                    }
+                }
+            }
+        });
+
+        // Table
+        const tbody = document.getElementById('soeTableBody');
+        DATA.soeData.forEach(d => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + d.name + '</td><td>' + d.org + '</td><td>' + d.role + '</td><td>' + d.action + '</td>';
+            tbody.appendChild(tr);
+        });
+    })();
+
+    // ============================================================
+    // SCHRODINGER'S GENERALS GRID
+    // ============================================================
+    (function buildSchrodinger() {
+        const grid = document.getElementById('generalGrid');
+        const total = 81;
+        const disappeared = 23;
+        const present = total - disappeared;
+
+        // Create shuffled indices for disappeared positions
+        const indices = Array.from({ length: total }, (_, i) => i);
+        // Fixed seed shuffle for consistency
+        const disappearedIndices = new Set();
+        const seed = [2, 7, 11, 15, 19, 23, 28, 33, 37, 41, 44, 48, 52, 55, 59, 62, 66, 69, 71, 74, 76, 78, 80];
+        seed.forEach(i => disappearedIndices.add(i));
+
+        for (let i = 0; i < total; i++) {
+            const cell = document.createElement('div');
+            if (disappearedIndices.has(i)) {
+                cell.className = 'general-cell disappeared';
+                cell.textContent = '?';
+                cell.style.animationDelay = (Math.random() * 3).toFixed(1) + 's';
+            } else {
+                cell.className = 'general-cell present';
+            }
+            grid.appendChild(cell);
+        }
+    })();
+
+
+    </script>
+</body>
+</html>
