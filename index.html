@@ -520,69 +520,6 @@
             margin-top: 12px;
         }
 
-        /* ===== ANATOMY (Body Metaphor) ===== */
-        .anatomy-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .anatomy-card {
-            background: var(--bg-card);
-            border: 1px solid var(--gold-muted);
-            border-radius: 12px;
-            padding: 32px;
-            transition: border-color 0.3s, transform 0.2s;
-        }
-
-        .anatomy-card:hover {
-            border-color: var(--gold-border);
-            transform: translateY(-3px);
-        }
-
-        .anatomy-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .anatomy-title {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .anatomy-meaning {
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-size: 0.95rem;
-            color: var(--cream-muted);
-            margin-bottom: 16px;
-        }
-
-        .anatomy-names {
-            list-style: none;
-        }
-
-        .anatomy-names li {
-            font-size: 0.9rem;
-            padding: 4px 0;
-            padding-left: 16px;
-            position: relative;
-            color: var(--cream-muted);
-        }
-
-        .anatomy-names li::before {
-            content: '\25B8';
-            position: absolute;
-            left: 0;
-            color: var(--gold-border);
-        }
-
-        @media (max-width: 768px) {
-            .anatomy-grid { grid-template-columns: 1fr; }
-        }
-
         /* ===== FACTION NETWORK ===== */
         .faction-container {
             position: relative;
@@ -772,9 +709,9 @@
 
         .general-grid {
             display: grid;
-            grid-template-columns: repeat(9, 1fr);
-            gap: 6px;
-            max-width: 420px;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            max-width: 460px;
             margin: 0 auto 40px;
         }
 
@@ -897,7 +834,6 @@
                 <li><a href="#stats">Numbers</a></li>
                 <li><a href="#threat-matrix">Threat Matrix</a></li>
                 <li><a href="#timeline">Timeline</a></li>
-                <li><a href="#anatomy">Anatomy</a></li>
                 <li><a href="#factions">Factions</a></li>
                 <li><a href="#soe-purges">SOE Purges</a></li>
             </ul>
@@ -982,20 +918,6 @@
         <p class="timeline-scroll-hint">&larr; Drag to scroll &rarr;</p>
     </section>
 
-    <!-- ANATOMY -->
-    <section id="anatomy">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-label">Corruption Anatomy</span>
-                <h2 class="section-title" style="color: var(--green);">Brains, Bones, Veins & Kidney Stones</h2>
-                <p class="section-subtitle">How corruption integrates horizontally and vertically through the system.</p>
-            </div>
-            <div class="anatomy-grid" id="anatomyGrid">
-                <!-- Populated by JS -->
-            </div>
-        </div>
-    </section>
-
     <!-- FACTIONS -->
     <section id="factions">
         <div class="container">
@@ -1061,8 +983,8 @@
             </div>
             <div class="schrodinger-content animate-on-scroll">
                 <div class="general-grid" id="generalGrid"></div>
-                <div class="schrodinger-stat">23 <span>/ 81</span></div>
-                <p class="schrodinger-desc">Xi-promoted generals have vanished without notice since October 2022</p>
+                <div class="schrodinger-stat">15–23 <span>/ 101</span></div>
+                <p class="schrodinger-desc">Generals assumed vanished without formal announcement</p>
             </div>
         </div>
     </section>
@@ -1070,8 +992,7 @@
 
     <!-- FOOTER -->
     <footer class="site-footer">
-        <p class="footer-title">Read Anushka Saxena's Newsletter, <a href="https://eyeonchina.substack.com" target="_blank" style="color: var(--cyan); text-decoration: none; border-bottom: 1px solid var(--cyan);">'Eye on China'</a>, for more</p>
-        <p class="footer-note" style="margin-top: 16px;">&copy; 2026 ChinMil Tracker</p>
+        <p class="footer-title">To know more, Check out <a href="https://eyeonchina.substack.com" target="_blank" style="color: var(--cyan); text-decoration: none; border-bottom: 1px solid var(--cyan);">eyeonchina.substack.com</a></p>
     </footer>
 
     <script>
@@ -1081,9 +1002,9 @@
     const DATA = {
         individuals: [
             { id: 'he_weidong', name: 'He Weidong', role: 'CMC Vice Chairman', domain: 'military_command', tier: 'EXPELLED', troubleScore: 98, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Leader of the Fujian Gang. Expelled alongside 8 others in the mega-purge at the 4th Plenum.' },
-            { id: 'li_yuchao', name: 'Li Yuchao', role: 'PLARF Commander', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 97, faction: null, actionDate: '2023', actionType: 'Purged', keyFact: 'First PLARF Commander purged. Triggered the cascade of Rocket Force investigations.' },
+            { id: 'li_yuchao', name: 'Li Yuchao', role: 'PLARF Commander', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 97, faction: null, actionDate: '2023', actionType: 'Purged', keyFact: 'First of 4 consecutive PLARF Commanders purged. Triggered the cascade of Rocket Force investigations.' },
             { id: 'miao_hua', name: 'Miao Hua', role: 'CMC Political Work Dept Director', domain: 'political_work', tier: 'EXPELLED', troubleScore: 96, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Head of the political work department. Core Fujian Gang member arrested November 2024.' },
-            { id: 'wang_houbin', name: 'Wang Houbin', role: 'Rocket Force Commander', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 96, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Second PLARF Commander purged in succession. PLAN background.' },
+            { id: 'wang_houbin', name: 'Wang Houbin', role: 'Rocket Force Commander', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 96, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Part of unprecedented chain: all 4 consecutive PLARF commanders now purged. PLAN background.' },
             { id: 'lin_xiangyang', name: 'Lin Xiangyang', role: 'Eastern Theater Commander', domain: 'military_command', tier: 'EXPELLED', troubleScore: 95, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Eastern Theater Commander. Critical for Taiwan contingency planning.' },
             { id: 'xu_zhongbo', name: 'Xu Zhongbo', role: 'PLARF Political Commissar', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 95, faction: null, actionDate: '2023', actionType: 'Purged', keyFact: 'Purged alongside Li Yuchao from the Rocket Force.' },
             { id: 'he_hongjun', name: 'He Hongjun', role: 'Deputy Dir, Political Work Dept', domain: 'political_work', tier: 'EXPELLED', troubleScore: 94, faction: 'fujian', actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Subordinate to Miao Hua in the political work system.' },
@@ -1091,6 +1012,15 @@
             { id: 'yuan_huazhi', name: 'Yuan Huazhi', role: 'Navy Political Commissar', domain: 'political_work', tier: 'EXPELLED', troubleScore: 92, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Navy political commissar. Part of the 9-person mega-purge.' },
             { id: 'qin_shutong', name: 'Qin Shutong', role: 'Army Political Commissar', domain: 'political_work', tier: 'EXPELLED', troubleScore: 92, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: 'Army political commissar expelled in the October mega-purge.' },
             { id: 'wang_chunning', name: 'Wang Chunning', role: "People's Armed Police Commander", domain: 'military_command', tier: 'EXPELLED', troubleScore: 91, faction: null, actionDate: 'Oct 2025', actionType: 'Expelled at 4th Plenum', keyFact: "PAP Commander. Domestic security apparatus affected by the purge." },
+            { id: 'qin_shengxiang', name: 'Qin Shengxiang', role: 'NPC Standing Committee, Former Navy Political Commissar', domain: 'political_work', tier: 'EXPELLED', troubleScore: 95, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. NPC Standing Committee member. Former Navy political commissar. NPC deputy qualifications revoked at 21st NPCSC session.' },
+            { id: 'shen_jinlong', name: 'Shen Jinlong', role: 'NPC Standing Committee, Former PLAN Commander', domain: 'military_command', tier: 'EXPELLED', troubleScore: 94, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. NPC Standing Committee member. Former PLAN Commander. NPC deputy qualifications revoked at 21st NPCSC session.' },
+            { id: 'yu_zhongfu', name: 'Yu Zhongfu', role: 'NPC Standing Committee, Former Air Force Political Commissar', domain: 'political_work', tier: 'EXPELLED', troubleScore: 93, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. NPC Standing Committee member. Former PLAAF political commissar. NPC deputy qualifications revoked at 21st NPCSC session.' },
+            { id: 'li_qiaoming', name: 'Li Qiaoming', role: 'Army Commander', domain: 'military_command', tier: 'EXPELLED', troubleScore: 92, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. PLA Army Commander. Previously removed in 2024; NPC deputy qualifications now formally revoked.' },
+            { id: 'liu_shaoyun', name: 'Liu Shaoyun', role: 'President, Military Court of the CMC', domain: 'military_command', tier: 'EXPELLED', troubleScore: 91, faction: null, actionDate: 'Feb 2026', actionType: 'Removed as Military Court President (21st NPCSC)', keyFact: 'Removed as President of the Military Court via separate vote. The military justice institution itself is compromised.' },
+            { id: 'wang_donghai', name: 'Wang Donghai', role: 'Political Commissar, CMC National Defense Mobilization Dept', domain: 'political_work', tier: 'EXPELLED', troubleScore: 90, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Lieutenant General. Political Commissar of the CMC National Defense Mobilization Department. NPC deputy qualifications revoked.' },
+            { id: 'bian_ruifeng', name: 'Bian Ruifeng', role: 'Asst Director, CMC Political Work Dept', domain: 'political_work', tier: 'EXPELLED', troubleScore: 89, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Major General. Assistant Director of the CMC Political Work Department. Corruption within the political oversight apparatus itself.' },
+            { id: 'ding_laifu', name: 'Ding Laifu', role: 'Commander, PLA 73rd Group Army', domain: 'military_command', tier: 'EXPELLED', troubleScore: 89, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Major General. Commander of the 73rd Group Army. Operational-level commander purged.' },
+            { id: 'yang_guang', name: 'Yang Guang', role: 'Commander, Rocket Force 64th Base', domain: 'rocket_force', tier: 'EXPELLED', troubleScore: 88, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Major General. Commander of the Rocket Force 64th Base. Rocket Force purge continues at operational base level.' },
             { id: 'zhang_youxia', name: 'Zhang Youxia', role: 'CMC Vice Chairman (age 76)', domain: 'military_command', tier: 'UNDER_INVESTIGATION', troubleScore: 80, faction: 'shaanxi', actionDate: 'Jan 2026', actionType: 'Investigation confirmed by MND', keyFact: 'Highest-ranking figure under investigation. Leader of the Shaanxi Gang. Career military officer.' },
             { id: 'li_shangfu', name: 'Li Shangfu', role: 'Former Defence Minister', domain: 'military_command', tier: 'UNDER_INVESTIGATION', troubleScore: 78, faction: null, actionDate: '2023', actionType: 'Removed < 6 months into role', keyFact: 'Defence Minister removed within 6 months. Corruption during EDD tenure.' },
             { id: 'liu_zhenli', name: 'Liu Zhenli', role: 'CMC Chief of Staff', domain: 'military_command', tier: 'UNDER_INVESTIGATION', troubleScore: 75, faction: null, actionDate: 'Jan 2026', actionType: 'Under investigation', keyFact: 'CMC Joint Staff Department Chief. Under investigation for serious violations.' },
@@ -1112,23 +1042,23 @@
         },
 
         stats: [
-            { value: 65, label: 'Centrally-managed officials investigated (2025)', color: 'red' },
-            { value: 33, label: 'Total Generals Removed in Just October 2025', color: 'yellow' },
+            { value: 101, label: 'Generals purged over 4 years (incl. 44 full generals)', color: 'red' },
+            { value: 62, label: 'Generals purged in 2025 alone', color: 'yellow' },
             { value: 780000, label: 'Total Indiscipline Cases Filed Nationwide', color: 'yellow', format: 'comma', suffix: '+' },
-            { value: 15, label: 'Defence SOE leaders targeted since 2023', color: 'cyan', suffix: '+' },
-            { value: 23, label: 'Xi-promoted generals vanished (of 81)', color: 'red' },
+            { value: 4, label: 'Consecutive PLARF Commanders removed', color: 'cyan' },
+            { value: 243, label: 'PLA & Armed Police NPC deputies remaining (down from 281 in Feb 2023)', color: 'red' },
         ],
 
         timeline: [
             { date: 'Jul 2023', title: 'EDD Whistleblower Notice', desc: 'Equipment Development Department issues public notice calling for whistleblowers to report procurement corruption dating back to 2017.', color: '#FF6B35' },
             { date: 'Jul 2023', title: 'Qin Gang Removed', desc: 'Foreign Minister Qin Gang removed during emergency NPC Standing Committee session.', color: '#E63946' },
-            { date: 'H2 2023', title: 'Rocket Force Commanders Purged', desc: 'Li Yuchao (PLARF Commander) and Xu Zhongbo (PLARF Political Commissar) purged. First major Rocket Force casualties.', color: '#E63946' },
+            { date: 'H2 2023', title: 'Rocket Force Commanders Purged', desc: 'Li Yuchao (PLARF Commander) and Xu Zhongbo (PLARF Political Commissar) purged. First of what would become all 4 consecutive PLARF Commander removals.', color: '#E63946' },
             { date: 'H2 2023', title: 'Li Shangfu Removed', desc: 'Defence Minister Li Shangfu removed less than 6 months into his role. Corruption during EDD tenure cited.', color: '#E63946' },
             { date: '2023\u20132024', title: 'Theater Commanders Replaced', desc: 'Wang Hajiang (Western TC), Huang Ming (Northern TC), Wu Yanan (Southern TC) replaced. Ju Qiansheng (SSF Commander) removed.', color: '#FF6B35' },
-            { date: '2024', title: 'Li Qiaoming Removed', desc: 'PLA Army Commander Li Qiaoming gone. Service-level leadership churn accelerates.', color: '#FF6B35' },
+            { date: '2024', title: 'Li Qiaoming Removed', desc: 'PLA Army Commander Li Qiaoming removed. NPC deputy qualifications formally revoked Feb 2026.', color: '#FF6B35' },
             { date: 'Aug 2024', title: 'Tan Ruisong Investigated', desc: 'AVIC Chairman Tan Ruisong investigated for corruption. First major defence SOE leadership casualty.', color: '#FFD60A' },
             { date: 'Sep 2024', title: 'PLA Restructured', desc: 'Cyberspace Force established from Strategic Support Force. Information Support Force and Joint Logistics created as new support arms.', color: '#00D4FF' },
-            { date: 'Oct 2024', title: 'Qin Shengxiang Rumored', desc: 'Former CMC General Office Director Qin Shengxiang allegedly under investigation for corruption.', color: '#A89F8B' },
+            { date: 'Oct 2024', title: 'Qin Shengxiang Rumored', desc: 'Former Navy political commissar Qin Shengxiang alleged to be under investigation. Later confirmed Feb 2026.', color: '#FF6B35' },
             { date: 'Early 2025', title: 'Tan Ruisong Expelled', desc: 'AVIC Chairman Tan Ruisong formally expelled from CPC following corruption investigation.', color: '#E63946' },
             { date: 'Mar 2025', title: 'Luo Qi Absent', desc: 'CNNC Chief Engineer Luo Qi conspicuously absent from Two Sessions presidium list, signaling political trouble.', color: '#A89F8B' },
             { date: 'Oct 17, 2025', title: '4th Plenum Mega-Purge', desc: '9 officials expelled: He Weidong, Miao Hua, He Hongjun, Wang Xiubin, Lin Xiangyang, Qin Shutong, Yuan Huazhi, Wang Houbin, Wang Chunning. Charges: serious violations, extraordinarily large sums.', color: '#E63946' },
@@ -1139,13 +1069,7 @@
             { date: 'Jan 24, 2026', title: 'Zhang Youxia Investigation Confirmed', desc: 'Ministry of National Defense confirms Zhang Youxia and Liu Zhenli under investigation for "serious violations of discipline and law." Gu Jun (CNNC) also removed.', color: '#E63946' },
             { date: 'Feb 3, 2026', title: 'AVIC Internal Meeting', desc: 'Internal AVIC anti-corruption meeting held. Signals imminent action against current leadership.', color: '#FF6B35' },
             { date: 'Feb 4, 2026', title: 'Emergency NPC Session', desc: 'Zhou Xinmin (AVIC Chairman), Luo Qi (CNNC Chief Engineer), Liu Cangli (CAEP Director) removed at emergency NPC Standing Committee session.', color: '#E63946' },
-        ],
-
-        anatomy: [
-            { icon: '\uD83E\uDDE0', title: 'Brains', subtitle: 'CMC Leadership &mdash; Command Decisions', color: 'var(--red)', names: ['He Weidong &mdash; CMC Vice Chairman (expelled)', 'Zhang Youxia &mdash; CMC Vice Chairman (under investigation)', 'Miao Hua &mdash; Political Work Dept Director (expelled)', 'Liu Zhenli &mdash; CMC Chief of Staff (under investigation)'] },
-            { icon: '\uD83E\uDDB4', title: 'Bones', subtitle: 'Force Structure &mdash; Theater Commands', color: 'var(--yellow)', names: ['Lin Xiangyang &mdash; Eastern Theater Commander', 'Qin Shutong &mdash; Army Political Commissar', 'Yuan Huazhi &mdash; Navy Political Commissar', 'Wang Chunning &mdash; PAP Commander'] },
-            { icon: '\uD83E\uDE78', title: 'Veins', subtitle: 'Procurement Networks &mdash; Patron-Client Ties', color: 'var(--cyan)', names: ['SOE leaders across AVIC, CNNC, CASC, NORINCO', 'EDD procurement bidding connections', 'Horizontal integration of corruption across agencies', '"Shadow companies" and proxy shareholding'] },
-            { icon: '\uD83E\uDEA8', title: 'Kidney Stones', subtitle: 'Embedded Corruption &mdash; Hard to Remove', color: 'var(--orange)', names: ['23 disappeared "Schrodinger\'s Generals"', '"Three-foot-thick ice" of systemic graft', 'Water-filled missiles, dysfunctional silos', '"Darkness under the lamp" in oversight bodies'] },
+            { date: 'Feb 27, 2026', title: '21st NPCSC: 9 Generals Expelled', desc: '21st session of the NPC Standing Committee. 9 PLA generals had NPC deputy qualifications revoked: Qin Shengxiang, Shen Jinlong, Yu Zhongfu, Li Qiaoming, Wang Donghai, Bian Ruifeng, Ding Laifu, Yang Guang. Liu Shaoyun removed as Military Court President. Zhang Youxia and Liu Zhenli not discussed — investigation ongoing. PLA NPC deputies down from 281 to 243.', color: '#E63946' },
         ],
 
         fujianGang: [
@@ -1419,24 +1343,6 @@
     })();
 
     // ============================================================
-    // ANATOMY (Body Metaphor)
-    // ============================================================
-    (function buildAnatomy() {
-        const grid = document.getElementById('anatomyGrid');
-        DATA.anatomy.forEach(a => {
-            const card = document.createElement('div');
-            card.className = 'anatomy-card animate-on-scroll';
-            card.innerHTML =
-                '<div class="anatomy-icon">' + a.icon + '</div>' +
-                '<div class="anatomy-title" style="color:' + a.color + ';">' + a.title + '</div>' +
-                '<div class="anatomy-meaning">' + a.subtitle + '</div>' +
-                '<ul class="anatomy-names">' + a.names.map(n => '<li>' + n + '</li>').join('') + '</ul>';
-            grid.appendChild(card);
-            scrollObserver.observe(card);
-        });
-    })();
-
-    // ============================================================
     // FACTION NETWORK
     // ============================================================
     (function buildFactions() {
@@ -1527,15 +1433,15 @@
     // ============================================================
     (function buildSchrodinger() {
         const grid = document.getElementById('generalGrid');
-        const total = 81;
+        const total = 101;
         const disappeared = 23;
         const present = total - disappeared;
 
         // Create shuffled indices for disappeared positions
         const indices = Array.from({ length: total }, (_, i) => i);
-        // Fixed seed shuffle for consistency
+        // Fixed seed shuffle for consistency (23 positions across 101 cells)
         const disappearedIndices = new Set();
-        const seed = [2, 7, 11, 15, 19, 23, 28, 33, 37, 41, 44, 48, 52, 55, 59, 62, 66, 69, 71, 74, 76, 78, 80];
+        const seed = [2, 7, 11, 15, 19, 24, 29, 34, 39, 44, 49, 53, 57, 62, 67, 72, 76, 80, 84, 88, 92, 96, 100];
         seed.forEach(i => disappearedIndices.add(i));
 
         for (let i = 0; i < total; i++) {
