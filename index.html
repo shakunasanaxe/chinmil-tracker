@@ -988,7 +988,7 @@
             <div class="section-header animate-on-scroll">
                 <span class="section-label">Patron-Client Networks</span>
                 <h2 class="section-title" style="color: var(--orange);">The Factions</h2>
-                <p class="section-subtitle">Two competing military factions: the Fujian Gang and the Shaanxi Gang.</p>
+                <p class="section-subtitle">Two competing military factions: the Fujian Gang and The Shaanxi/ Ground Forces' Gang.</p>
             </div>
             <div class="faction-container animate-on-scroll" id="factionContainer">
                 <div class="faction-layout">
@@ -997,7 +997,7 @@
                         <div class="faction-nodes" id="fujianNodes"></div>
                     </div>
                     <div class="faction-column" id="shaanxiColumn">
-                        <div class="faction-title" style="color: var(--yellow); border-color: var(--yellow);">Shaanxi Gang</div>
+                        <div class="faction-title" style="color: var(--yellow); border-color: var(--yellow);">The Shaanxi/ Ground Forces' Gang</div>
                         <div class="faction-nodes" id="shaanxiNodes"></div>
                     </div>
                 </div>
@@ -1079,7 +1079,7 @@
             { id: 'qin_shengxiang', name: 'Qin Shengxiang', role: 'NPC Standing Committee, Former Navy Political Commissar', domain: 'political_work', tier: 'EXPELLED', troubleScore: 95, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. NPC Standing Committee member. Former Navy political commissar. NPC deputy qualifications revoked at 21st NPCSC session.', bio: 'Born 1957, Hubei. CMC General Office director, CMC Organization Department director, Navy political commissar 2017-2022. NPC Standing Committee member. Rumored under investigation since Oct 2024, confirmed Feb 2026.' },
             { id: 'shen_jinlong', name: 'Shen Jinlong', role: 'NPC Standing Committee, Former PLAN Commander', domain: 'military_command', tier: 'EXPELLED', troubleScore: 94, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. NPC Standing Committee member. Former PLAN Commander. NPC deputy qualifications revoked at 21st NPCSC session.', bio: 'Born 1956, Shanghai. Enlisted in PLAN 1974. Frigate commander, South Sea Fleet commander. PLAN Commander Jan 2017-Aug 2021. NPC Standing Committee member. NPC deputy qualifications revoked Feb 2026.' },
             { id: 'yu_zhongfu', name: 'Yu Zhongfu', role: 'NPC Standing Committee, Former Air Force Political Commissar', domain: 'political_work', tier: 'EXPELLED', troubleScore: 93, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. NPC Standing Committee member. Former PLAAF political commissar. NPC deputy qualifications revoked at 21st NPCSC session.', bio: 'Born 1956, Shandong. PLAAF political commissar July 2015-Jan 2022. NPC Standing Committee member. Known as the calligrapher of the armed forces. NPC deputy qualifications revoked Feb 2026.' },
-            { id: 'li_qiaoming', name: 'Li Qiaoming', role: 'Army Commander', domain: 'military_command', tier: 'EXPELLED', troubleScore: 92, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. PLA Army Commander. Previously removed in 2024; NPC deputy qualifications now formally revoked.', bio: 'Born 1961, Henan. 41st Group Army chief of staff, Northern Theater Command commander 2017-2022 — first post-1960s officer to lead a theater command. PLA Ground Force commander Dec 2022. Removed 2024.' },
+            { id: 'li_qiaoming', name: 'Li Qiaoming', role: 'Army Commander', domain: 'military_command', tier: 'EXPELLED', troubleScore: 92, faction: 'shaanxi', actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Full General. PLA Army Commander. Previously removed in 2024; NPC deputy qualifications now formally revoked.', bio: 'Born 1961, Henan. 41st Group Army chief of staff, Northern Theater Command commander 2017-2022 — first post-1960s officer to lead a theater command. PLA Ground Force commander Dec 2022. Removed 2024.' },
             { id: 'liu_shaoyun', name: 'Liu Shaoyun', role: 'President, Military Court of the CMC', domain: 'military_command', tier: 'EXPELLED', troubleScore: 91, faction: null, actionDate: 'Feb 2026', actionType: 'Removed as Military Court President (21st NPCSC)', keyFact: 'Removed as President of the Military Court via separate vote. The military justice institution itself is compromised.', bio: 'President of the Military Court of the PLA. Removed via separate vote at 21st NPCSC session Feb 2026. The institution tasked with military justice is itself now compromised.' },
             { id: 'wang_donghai', name: 'Wang Donghai', role: 'Political Commissar, CMC National Defense Mobilization Dept', domain: 'political_work', tier: 'EXPELLED', troubleScore: 90, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Lieutenant General. Political Commissar of the CMC National Defense Mobilization Department. NPC deputy qualifications revoked.', bio: 'Lieutenant General. Deputy director National Defense Mobilization Department 2021, Southern Theater Army political commissar. Political Commissar of CMC National Defense Mobilization Department. NPC qualifications stripped Feb 2026.' },
             { id: 'bian_ruifeng', name: 'Bian Ruifeng', role: 'Asst Director, CMC Political Work Dept', domain: 'political_work', tier: 'EXPELLED', troubleScore: 89, faction: null, actionDate: 'Feb 2026', actionType: 'NPC qualifications revoked (21st NPCSC)', keyFact: 'Major General. Assistant Director of the CMC Political Work Department. Corruption within the political oversight apparatus itself.', bio: 'Major General. Assistant Director of CMC Political Work Department. NPC delegate qualifications stripped Feb 2026. Long suspected of being purged prior to formal removal.' },
@@ -1133,7 +1133,7 @@
             { date: 'Jan 24, 2026', title: 'Zhang Youxia Investigation Confirmed', desc: 'Ministry of National Defense confirms Zhang Youxia and Liu Zhenli under investigation for "serious violations of discipline and law." Gu Jun (CNNC) also removed.', color: '#FF2D55' },
             { date: 'Feb 3, 2026', title: 'AVIC Internal Meeting', desc: 'Internal AVIC anti-corruption meeting held. Signals imminent action against current leadership.', color: '#FB5607' },
             { date: 'Feb 4, 2026', title: 'Emergency NPC Session', desc: 'Zhou Xinmin (AVIC Chairman), Luo Qi (CNNC Chief Engineer), Liu Cangli (CAEP Director) removed at emergency NPC Standing Committee session.', color: '#FF2D55' },
-            { date: 'Feb 27, 2026', title: '21st NPCSC: 9 Generals Expelled', desc: '21st session of the NPC Standing Committee. 9 PLA generals had NPC deputy qualifications revoked: Qin Shengxiang, Shen Jinlong, Yu Zhongfu, Li Qiaoming, Wang Donghai, Bian Ruifeng, Ding Laifu, Yang Guang. Liu Shaoyun removed as Military Court President. Zhang Youxia and Liu Zhenli not discussed — investigation ongoing. PLA NPC deputies down from 281 to 243.', color: '#FF2D55' },
+            { date: 'Feb 27, 2026', title: '21st NPCSC: 9 Generals Expelled', desc: '21st session of the NPC Standing Committee. 9 PLA generals had NPC deputy qualifications revoked: Qin Shengxiang, Shen Jinlong, Yu Zhongfu, Li Qiaoming, Wang Donghai, Bian Ruifeng, Ding Laifu, Yang Guang. Liu Shaoyun removed as Military Court President.', color: '#FF2D55' },
         ],
 
         fujianGang: [
@@ -1279,6 +1279,20 @@
 
         if (threatChartInstance) threatChartInstance.destroy();
 
+        // Build a gradient that shifts color per data point based on tier
+        const chartArea = ctx.canvas;
+        const grad = ctx.createLinearGradient(0, 0, chartArea.width, 0);
+        const tierColors = {
+            EXPELLED: 'rgba(255, 45, 85, 0.25)',
+            UNDER_INVESTIGATION: 'rgba(251, 86, 7, 0.25)',
+            RECENTLY_REMOVED: 'rgba(255, 190, 11, 0.25)',
+            PREVIOUSLY_PURGED_SOE: 'rgba(58, 134, 255, 0.25)'
+        };
+        filtered.forEach((p, i) => {
+            const stop = filtered.length > 1 ? i / (filtered.length - 1) : 0;
+            grad.addColorStop(stop, tierColors[p.tier] || 'rgba(74, 77, 124, 0.15)');
+        });
+
         threatChartInstance = new Chart(ctx, {
             type: 'line',
             data: {
@@ -1291,8 +1305,9 @@
                     pointBorderColor: filtered.map(p => DATA.tierConfig[p.tier].color),
                     pointRadius: 6,
                     pointHoverRadius: 9,
-                    tension: 0.1,
-                    fill: false
+                    tension: 0.3,
+                    fill: true,
+                    backgroundColor: grad
                 }]
             },
             options: {
